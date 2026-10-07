@@ -1,0 +1,78 @@
+; Exercicio 2 - soma sem sinal de 8 e 16 bits, com overflow
+; Resultado de 16 bits armazenado em big-endian (alto, baixo).
+ORG 0
+
+inicio:
+        ldr a valor8_a
+        add a valor8_b
+        jc soma8_com_overflow
+        str a resultado8
+        ldr a #0
+        str a overflow8
+        jmp soma16
+
+soma8_com_overflow:
+        str a resultado8
+        ldr a #255        ; FFh
+        str a overflow8
+
+soma16:
+        ldr a soma16_a_lo
+        add a soma16_b_lo
+        jc soma16_com_carry_baixo
+        str a resultado16_lo
+        ldr a soma16_a_hi
+        add a soma16_b_hi
+        jc soma16_overflow_altos
+        str a resultado16_hi
+        ldr a #0
+        str a overflow16
+        jmp fim
+
+soma16_overflow_altos:
+        str a resultado16_hi
+        ldr a #255        ; FFh
+        str a overflow16
+        jmp fim
+
+soma16_com_carry_baixo:
+        str a resultado16_lo
+        ldr a soma16_a_hi
+        add a soma16_b_hi
+        jc soma16_carry_altos
+        add a #1          ; propaga o carry do byte baixo
+        jc soma16_overflow_incremento
+        str a resultado16_hi
+        ldr a #0
+        str a overflow16
+        jmp fim
+
+soma16_carry_altos:
+        add a #1          ; propaga o carry, com overflow ja detectado
+        str a resultado16_hi
+        ldr a #255        ; FFh
+        str a overflow16
+        jmp fim
+
+soma16_overflow_incremento:
+        str a resultado16_hi
+        ldr a #255        ; FFh
+        str a overflow16
+        jmp fim
+
+fim:
+        hlt
+
+; Entradas editaveis e saidas.
+valor8_a:       db 0
+valor8_b:       db 0
+resultado8:     db 0
+overflow8:      db 0
+
+soma16_a_hi:    db 0
+soma16_a_lo:    db 0
+soma16_b_hi:    db 0
+soma16_b_lo:    db 0
+resultado16_hi: db 0
+resultado16_lo: db 0
+overflow16:     db 0

@@ -1,0 +1,59 @@
+; Exercicio 5 - conversoes de sinal para Ramses
+; Palavra DW apresentada como byte alto, byte baixo (big-endian).
+ORG 0
+
+inicio: jsr converte_byte
+        jsr converte_palavra
+        hlt
+
+; Entrada: entrada_byte (DB), positiva, intervalo 0..127.
+; Saidas: saida_byte_tc (complemento de dois) e saida_byte_sm.
+converte_byte: db 0
+        ldr a entrada_byte
+        not a
+        add a #1
+        str a saida_byte_tc
+        ldr a entrada_byte
+        or a #128
+        str a saida_byte_sm
+        jmp converte_byte, i
+
+; Entrada: entrada_palavra (DW), positiva, intervalo 0..32767.
+; Saidas big-endian em dois bytes para cada representacao.
+converte_palavra: db 0
+        ldr a entrada_palavra
+        not a
+        str a saida_palavra_tc_hi
+        ldr x #1
+        ldr a entrada_palavra,x
+        not a
+        add a #1
+        jc palavra_tc_carry
+        str a saida_palavra_tc_lo
+        jmp palavra_tc_low_done
+
+palavra_tc_carry:
+        str a saida_palavra_tc_lo
+        ldr a saida_palavra_tc_hi
+        add a #1
+        str a saida_palavra_tc_hi
+
+palavra_tc_low_done:
+        ldr a entrada_palavra
+        or a #128
+        str a saida_palavra_sm_hi
+        ldr x #1
+        ldr a entrada_palavra,x
+        str a saida_palavra_sm_lo
+        jmp converte_palavra, i
+
+; Exemplo: 42 decimal = 2Ah; 4660 decimal = 1234h (big-endian).
+entrada_byte: db 42
+entrada_palavra: dw 4660
+
+saida_byte_tc: db 0
+saida_byte_sm: db 0
+saida_palavra_tc_hi: db 0
+saida_palavra_tc_lo: db 0
+saida_palavra_sm_hi: db 0
+saida_palavra_sm_lo: db 0

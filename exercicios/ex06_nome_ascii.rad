@@ -1,0 +1,53 @@
+; Exercicio 6 - grava nome completo em ASCII
+; O destino comeca no endereco declarado em base; sem terminador NUL.
+ORG 0
+
+inicio: ldr a base
+        str a ponteiro
+        ldr x #0
+        ldr b #25
+
+copia:  ldr a texto,x
+        str a ponteiro,i
+        ldr a ponteiro
+        add a #1
+        str a ponteiro
+        add x #1
+        sub b #1
+        jz fim
+        jmp copia
+
+fim:    hlt
+
+base: db 128
+ponteiro: db 0
+
+; Murilo Zamperlin de Souza: bytes ASCII decimais.
+texto:  db 77          ; M
+        db 117         ; u
+        db 114         ; r
+        db 105         ; i
+        db 108         ; l
+        db 111         ; o
+        db 32          ; espaco
+        db 90          ; Z
+        db 97          ; a
+        db 109         ; m
+        db 112         ; p
+        db 101         ; e
+        db 114         ; r
+        db 108         ; l
+        db 105         ; i
+        db 110         ; n
+        db 32          ; espaco
+        db 100         ; d
+        db 101         ; e
+        db 32          ; espaco
+        db 83          ; S
+        db 111         ; o
+        db 117         ; u
+        db 122         ; z
+        db 97          ; a
+
+ORG 128
+destino: dab [25]

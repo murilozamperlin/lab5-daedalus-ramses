@@ -1,0 +1,11 @@
+Símbolo         Valor Decimal   Valor Hexadecimal
+-------         -------------   -----------------
+INICIO                      0                   0
+LOOP                       10                   A
+SOMA_COM_CARRY             20                  14
+DECREMENTA_CONTADOR        28                  1C
+FIM                        34                  22
+OPERANDO_A                 35                  23
+OPERANDO_B                 36                  24
+PRODUTO_BAIXO              37                  25
+PRODUTO_ALTO               38                  26

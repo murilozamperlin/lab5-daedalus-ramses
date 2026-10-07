@@ -1,0 +1,20 @@
+; Exercicio 3 - limpar n posicoes consecutivas da memoria
+; endereco_inicial guarda o endereco-base; n guarda a quantidade.
+ORG 0
+
+inicio: ldr x endereco_inicial
+        ldr b n
+        jz fim           ; n=0: termina sem escrever
+        ldr a #0
+
+repete: str a 0,x       ; MEM[X] <- 0
+        add x #1         ; avanca para a proxima posicao
+        sub b #1         ; decrementa a quantidade restante
+        jz fim           ; terminou quando a quantidade chega a zero
+        jmp repete
+
+fim:    hlt
+
+; Dados de exemplo: limpar quatro bytes desde o endereco decimal 80.
+endereco_inicial: db 80
+n:                 db 4

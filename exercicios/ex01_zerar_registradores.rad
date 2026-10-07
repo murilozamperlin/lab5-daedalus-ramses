@@ -1,0 +1,28 @@
+; Exercicio 1 - zerar A, B e X individualmente e em conjunto
+ORG 0
+
+inicio: jsr zera_a
+        jsr zera_b
+        jsr zera_x
+        jsr zera_todos
+        hlt
+
+; A primeira celula recebe o endereco de retorno do JSR.
+zera_a: db 0
+        ldr a #0
+        jmp zera_a, i
+
+zera_b: db 0
+        ldr b #0
+        jmp zera_b, i
+
+zera_x: db 0
+        ldr x #0
+        jmp zera_x, i
+
+; Esta rotina chama as tres rotinas individuais.
+zera_todos: db 0
+        jsr zera_a
+        jsr zera_b
+        jsr zera_x
+        jmp zera_todos, i

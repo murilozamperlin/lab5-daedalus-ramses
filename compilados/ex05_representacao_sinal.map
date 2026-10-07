@@ -1,0 +1,15 @@
+Símbolo         Valor Decimal   Valor Hexadecimal
+-------         -------------   -----------------
+INICIO                      0                   0
+CONVERTE_BYTE               5                   5
+CONVERTE_PALAVRA           21                  15
+PALAVRA_TC_CARRY           40                  28
+PALAVRA_TC_LOW_DONE        48                  30
+ENTRADA_BYTE               62                  3E
+ENTRADA_PALAVRA            63                  3F
+SAIDA_BYTE_TC              65                  41
+SAIDA_BYTE_SM              66                  42
+SAIDA_PALAVRA_TC_HI        67                  43
+SAIDA_PALAVRA_TC_LO        68                  44
+SAIDA_PALAVRA_SM_HI        69                  45
+SAIDA_PALAVRA_SM_LO        70                  46

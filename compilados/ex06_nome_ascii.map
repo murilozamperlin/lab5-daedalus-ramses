@@ -1,0 +1,9 @@
+Símbolo         Valor Decimal   Valor Hexadecimal
+-------         -------------   -----------------
+INICIO                      0                   0
+COPIA                       8                   8
+FIM                        26                  1A
+BASE                       27                  1B
+PONTEIRO                   28                  1C
+TEXTO                      29                  1D
+DESTINO                   128                  80

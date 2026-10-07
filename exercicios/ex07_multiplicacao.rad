@@ -1,0 +1,32 @@
+; Exercicio 7 - multiplicacao de bytes sem sinal por somas repetidas
+; Edite operando_a e operando_b. Resultado: produto_alto:produto_baixo.
+ORG 0
+
+inicio: ldr a #0
+        str a produto_baixo
+        str a produto_alto
+        ldr x operando_b
+        jz fim
+
+loop:   ldr a produto_baixo
+        add a operando_a
+        jc soma_com_carry
+        str a produto_baixo
+        jmp decrementa_contador
+
+soma_com_carry: str a produto_baixo
+        ldr a produto_alto
+        add a #1
+        str a produto_alto
+
+decrementa_contador: sub x #1
+        jz fim
+        jmp loop
+
+fim:    hlt
+
+; Entradas e saidas. Exemplo: 13 * 7 = 0x005B.
+operando_a: db 13
+operando_b: db 7
+produto_baixo: db 0
+produto_alto: db 0

@@ -1,0 +1,38 @@
+; Exercicio 4 - compara tres bytes sem sinal e grava o maior
+; Em empate, vence a primeira variavel na ordem A, B, C.
+; vencedor: 1=A, 2=B, 3=C.
+ORG 0
+
+inicio: ldr a valor_a
+        str a maior
+        ldr x #1          ; A e o maior inicial
+
+        ldr a valor_b
+        sub a maior       ; C=1 indica que B >= maior
+        jc b_sem_borrow
+        jmp compara_c
+
+b_sem_borrow: jz compara_c
+        ldr a valor_b
+        str a maior
+        ldr x #2
+
+compara_c: ldr a valor_c
+        sub a maior       ; C=1 indica que C >= maior
+        jc c_sem_borrow
+        jmp grava_resultado
+
+c_sem_borrow: jz grava_resultado
+        ldr a valor_c
+        str a maior
+        ldr x #3
+
+grava_resultado: str x vencedor
+        hlt
+
+; Setor de variaveis: entradas e resultados.
+valor_a: db 0
+valor_b: db 0
+valor_c: db 0
+maior: db 0
+vencedor: db 0

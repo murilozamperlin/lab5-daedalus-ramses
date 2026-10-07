@@ -1,0 +1,21 @@
+Símbolo         Valor Decimal   Valor Hexadecimal
+-------         -------------   -----------------
+INICIO                      0                   0
+SOMA8_COM_OVERFLOW         14                   E
+SOMA16                     20                  14
+SOMA16_OVERFLOW_ALTOS       42                  2A
+SOMA16_COM_CARRY_BAIXO       50                  32
+SOMA16_CARRY_ALTOS         70                  46
+SOMA16_OVERFLOW_INCREMENTO       80                  50
+FIM                        88                  58
+VALOR8_A                   89                  59
+VALOR8_B                   90                  5A
+RESULTADO8                 91                  5B
+OVERFLOW8                  92                  5C
+SOMA16_A_HI                93                  5D
+SOMA16_A_LO                94                  5E
+SOMA16_B_HI                95                  5F
+SOMA16_B_LO                96                  60
+RESULTADO16_HI             97                  61
+RESULTADO16_LO             98                  62
+OVERFLOW16                 99                  63

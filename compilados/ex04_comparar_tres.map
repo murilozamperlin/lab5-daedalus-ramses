@@ -1,0 +1,12 @@
+Símbolo         Valor Decimal   Valor Hexadecimal
+-------         -------------   -----------------
+INICIO                      0                   0
+B_SEM_BORROW               14                   E
+COMPARA_C                  22                  16
+C_SEM_BORROW               30                  1E
+GRAVA_RESULTADO            38                  26
+VALOR_A                    41                  29
+VALOR_B                    42                  2A
+VALOR_C                    43                  2B
+MAIOR                      44                  2C
+VENCEDOR                   45                  2D
